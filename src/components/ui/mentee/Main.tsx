@@ -1,3 +1,4 @@
+import Link from "next/link";
 
 const Main = () => {
     return (
@@ -12,7 +13,9 @@ const Main = () => {
                     <section className="mt-10 text-2xl">
                         <h2> ORS </h2>
                         <p> 오늘을 포함해 지난 한주간을 돌아봅시다.</p>
-                        <button className="border-2 border-black bg-blue-400 mt-2">ORS 시작하기</button>
+                        <Link
+                            href="/mentee/ors"
+                            className="border-2 border-black bg-blue-400 mt-2">ORS 시작하기</Link>
                     </section>
                     <section className="mt-10 text-2xl">
                         <h2> SRS </h2>

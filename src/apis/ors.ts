@@ -13,8 +13,6 @@ export const getTodoById = async (id: number) => {
     return result.data;
 }
 
-
-// todoList 추가
 export const createTodo = async (
     individual: number,
     interpersonal: number,

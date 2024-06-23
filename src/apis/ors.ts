@@ -13,7 +13,7 @@ export const getTodoById = async (id: number) => {
     return result.data;
 }
 
-export const createTodo = async (
+export const createOrs = async (
     individual: number,
     interpersonal: number,
     social: number,

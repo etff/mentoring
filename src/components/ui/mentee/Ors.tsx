@@ -4,7 +4,13 @@ import {useState} from "react";
 const MAX = 10;
 const MIN = 0;
 
-const Ors = () => {
+type Props = {
+    sharedUserFullName: string | "";
+};
+
+const Ors = ({
+                 sharedUserFullName = "",
+             }: Props) => {
     const [individual, setIndividual] = useState<number>(MIN);
     const [interpersonal, setInterpersonal] = useState<number>(MIN);
     const [social, setSocial] = useState<number>(MIN);
@@ -34,7 +40,7 @@ const Ors = () => {
                         <h1 className="text-6xl font-bold">
                             ORS
                         </h1>
-                        <p className="mt-2 text-xl">test 님 요청 드립니다.</p>
+                        <p className="mt-2 text-xl">{sharedUserFullName} 님 요청 드립니다.</p>
                         <p className="mt-2 text-xl">
                             오늘을 포함하여 지난 한주간 자신의 삶을 평가해주세요. 왼쪽에 표시하는 것은 낮은 수준을 뜻하며, 오른쪽에 표시하는 것은 높은 수준을 뜻합니다.
                         </p>

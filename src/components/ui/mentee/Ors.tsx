@@ -1,20 +1,24 @@
 "use client";
 import {useState} from "react";
+import {useRouter} from "next/navigation";
 
 const MAX = 10;
 const MIN = 0;
 
 type Props = {
     sharedUserFullName: string | "";
+    onCreateOrs: (individual: number, interpersonal: number, social: number, overall: number) => {};
 };
 
 const Ors = ({
                  sharedUserFullName = "",
+                 onCreateOrs,
              }: Props) => {
     const [individual, setIndividual] = useState<number>(MIN);
     const [interpersonal, setInterpersonal] = useState<number>(MIN);
     const [social, setSocial] = useState<number>(MIN);
     const [overall, setOverall] = useState<number>(MIN);
+    const router = useRouter();
 
     const handleIndividual = (event: React.ChangeEvent<HTMLInputElement>) => {
         setIndividual(Number(event.target.value));
@@ -31,6 +35,11 @@ const Ors = ({
     const handleOverall = (event: React.ChangeEvent<HTMLInputElement>) => {
         setOverall(Number(event.target.value));
     };
+
+    const onSubmit = () => {
+        onCreateOrs(individual, interpersonal, social, overall);
+        router.push("/mentee");
+    }
 
     return (
         <main className="w-full max-w-[800px] p-[20px] mx-auto">
@@ -78,6 +87,7 @@ const Ors = ({
 
                         <div className="flex items-center justify-between mt-4 w-full">
                             <button
+                                onClick={onSubmit}
                                 className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full"
                                 type="button">
                                 제출하기

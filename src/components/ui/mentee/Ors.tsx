@@ -1,5 +1,5 @@
 "use client";
-import {useState} from "react";
+import {FormEvent, useState} from "react";
 import {useRouter} from "next/navigation";
 
 const MAX = 10;
@@ -36,14 +36,15 @@ const Ors = ({
         setOverall(Number(event.target.value));
     };
 
-    const onSubmit = () => {
+    const onSubmit = (event: FormEvent<HTMLFormElement>) => {
+        event.preventDefault();
         onCreateOrs(individual, interpersonal, social, overall);
         router.push("/mentee");
-    }
+    };
 
     return (
-        <main className="w-full max-w-[800px] p-[20px] mx-auto">
-            <section className="w-full max-w-[800px] p-[100px] mx-auto">
+        <main className="w-full mx-auto flex justify-center items-center min-h-screen">
+            <section className="w-full mx-auto p-2">
                 <article className="flex flex-col justify-between items-center">
                     <header className="w-full flex flex-col items-center">
                         <h1 className="text-6xl font-bold">
@@ -54,7 +55,7 @@ const Ors = ({
                             오늘을 포함하여 지난 한주간 자신의 삶을 평가해주세요. 왼쪽에 표시하는 것은 낮은 수준을 뜻하며, 오른쪽에 표시하는 것은 높은 수준을 뜻합니다.
                         </p>
                     </header>
-                    <section className="mt-10 text-2xl w-full flex flex-col items-center">
+                    <form className="mt-10 text-2xl w-full flex flex-col items-center" onSubmit={onSubmit}>
                         <div className="w-full">
                             <label htmlFor="minmax-range1"
                                    className="block mb-2 text-sm font-medium text-gray-900 ">개인적으로 (자기자신의 웰빙)</label>
@@ -64,21 +65,24 @@ const Ors = ({
                                    className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700"/>
 
                             <label htmlFor="minmax-range2"
-                                   className="block mt-2 mb-2 text-sm font-medium text-gray-900">대인적으로 (가까운 관계, 가족)</label>
+                                   className="block mt-2 mb-2 text-sm font-medium text-gray-900">대인적으로 (가까운 관계,
+                                가족)</label>
 
                             <input id="labels-range-input2" type="range" value={interpersonal} min="0" max="10"
                                    onChange={handleInterpersonal}
                                    className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700"/>
 
                             <label htmlFor="minmax-range3"
-                                   className="block mt-2 mb-2 text-sm font-medium text-gray-900">사회적으로 (친구관계, 학교, 직장)</label>
+                                   className="block mt-2 mb-2 text-sm font-medium text-gray-900">사회적으로 (친구관계, 학교,
+                                직장)</label>
 
                             <input id="labels-range-input3" type="range" value={social} min="0" max="10"
                                    onChange={handleSocial}
                                    className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700"/>
 
                             <label htmlFor="minmax-range4"
-                                   className="block mt-2 mb-2 text-sm font-medium text-gray-900">전반적으로 (웰빙에 대한 전반적 느낌)</label>
+                                   className="block mt-2 mb-2 text-sm font-medium text-gray-900">전반적으로 (웰빙에 대한 전반적
+                                느낌)</label>
 
                             <input id="labels-range-input4" type="range" value={overall} min="0" max="10"
                                    onChange={handleOverall}
@@ -87,13 +91,12 @@ const Ors = ({
 
                         <div className="flex items-center justify-between mt-4 w-full">
                             <button
-                                onClick={onSubmit}
                                 className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full"
-                                type="button">
+                                type="submit">
                                 제출하기
                             </button>
                         </div>
-                    </section>
+                    </form>
                 </article>
             </section>
         </main>

@@ -41,7 +41,7 @@ const AuthHeader = ({user}: AuthHeaderProps) => {
                         onClick={goToHome}
                         className="flex flex-row items-center cursor-pointer gap-2"
                     >
-                        MENTORING <IoPeople size={30} />
+                        MENTORING <IoPeople size={30}/>
                     </div>
 
                     {isLoggedIn ? (
@@ -50,7 +50,7 @@ const AuthHeader = ({user}: AuthHeaderProps) => {
                             className="flex flex-row items-center gap-2 cursor-pointer"
                         >
                             Logout
-                            <MdLogout size={30} />
+                            <MdLogout size={30}/>
                         </div>
                     ) : (
                         <div
@@ -58,7 +58,7 @@ const AuthHeader = ({user}: AuthHeaderProps) => {
                             className="flex flex-row items-center gap-2 cursor-pointer"
                         >
                             Login
-                            <FcGoogle size={30} />
+                            <FcGoogle size={30}/>
                         </div>
                     )}
                 </div>

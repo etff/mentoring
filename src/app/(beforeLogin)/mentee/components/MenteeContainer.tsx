@@ -1,10 +1,10 @@
 import Main from "@/components/ui/mentee/Main";
 
-type Props = { };
+type Props = {};
 const MenteeContainer = () => {
     return (
         <div>
-            <Main />
+            <Main/>
         </div>
     )
 };

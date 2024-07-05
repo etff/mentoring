@@ -1,4 +1,4 @@
-import {createOrs} from "@/apis/ors";
+import {createOrs} from "@/actions/ors/ors.action";
 
 
 const orsController = () => {

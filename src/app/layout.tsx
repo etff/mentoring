@@ -16,7 +16,7 @@ type Props = {
 }
 
 export default async function RootLayout({children,}: Props) {
-    const user = await getUser({ serverComponent: true });
+    const user = await getUser({serverComponent: true});
     return (
         <html lang="en">
         <body className={`${inter.className} bg-blue-200 text-black`}>

@@ -1,10 +1,10 @@
-"use client";
+"use server";
 
-import {createSupabaseBrowserClient} from "@/lib/client/supabase";
+import {createServerSideClient} from "@/lib/supabase";
 
 // todoList 가져오기 + byId
 export const getTodoById = async (id: number) => {
-    const supabase = createSupabaseBrowserClient();
+    const supabase = await createServerSideClient();
     const result = await supabase.from("ors")
         .select("*")
         .is("deleted_at", null)
@@ -19,7 +19,7 @@ export const createOrs = async (
     social: number,
     overall: number
 ) => {
-    const supabase = createSupabaseBrowserClient();
+    const supabase = await createServerSideClient();
     const result = await supabase.from("ors")
         .insert({
             individual,

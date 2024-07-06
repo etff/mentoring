@@ -1,4 +1,4 @@
-import {getProfileById, getUser} from "@/actions/auth/user.action";
+import {getProfileById} from "@/actions/auth/user.action";
 import {useEffect, useState} from "react";
 import {Database} from "@/types/supabase";
 

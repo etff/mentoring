@@ -1,5 +1,4 @@
-import OrsContainer from "@/app/(beforeLogin)/mentee/ors/components/OrsContainer";
-import {useRouter} from "next/navigation";
+import OrsContainer from "@/app/(site)/mentee/ors/components/OrsContainer";
 import {getUser} from "@/actions/auth/user.action";
 
 type Props = {

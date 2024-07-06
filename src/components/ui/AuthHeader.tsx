@@ -6,11 +6,11 @@ import {createSupabaseBrowserClient} from "@/lib/client/supabase";
 import {useRouter} from "next/navigation";
 import {User} from "@supabase/auth-js";
 
-interface AuthHeaderProps {
+type Props = {
     user?: User | null;
 }
 
-const AuthHeader = ({user}: AuthHeaderProps) => {
+const AuthHeader = ({user}: Props) => {
     const isLoggedIn = !!user?.email;
     const supabase = createSupabaseBrowserClient();
     const router = useRouter();

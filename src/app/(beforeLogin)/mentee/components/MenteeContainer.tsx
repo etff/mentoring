@@ -1,10 +1,14 @@
 import Main from "@/components/ui/mentee/Main";
+import {User} from "@supabase/auth-js";
 
-type Props = {};
-const MenteeContainer = () => {
+type Props = {
+    user: User | null;
+}
+
+const MenteeContainer = ({user}: Props) => {
     return (
         <div>
-            <Main/>
+            <Main user={user} />
         </div>
     )
 };

@@ -1,13 +1,20 @@
 "use client"
 import Ors from "@/components/ui/mentee/Ors";
-import orsController from "@/app/(beforeLogin)/mentee/hooks/orsController";
+import OrsController from "@/app/(beforeLogin)/mentee/hooks/orsController";
+import UserController from "@/app/(beforeLogin)/mentee/hooks/userController";
 
-const OrsContainer = () => {
-    const {onCreateOrs} = orsController();
+type Props = {
+    userId: string;
+}
+
+const OrsContainer = ({userId}:Props) => {
+    const {onCreateOrs} = OrsController(userId);
+    const {profile} = UserController(userId);
+
     return (
         <div>
             <Ors
-                sharedUserFullName="test"
+                profile={profile}
                 onCreateOrs={onCreateOrs}
             />
         </div>

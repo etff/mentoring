@@ -1,7 +1,7 @@
 import {createOrs} from "@/actions/ors/ors.action";
 
 
-const orsController = () => {
+const OrsController = (userId: string) => {
 
     const onCreateOrs = async (
         individual: number,
@@ -13,11 +13,12 @@ const orsController = () => {
             individual,
             interpersonal,
             social,
-            overall
+            overall,
+            userId
         );
     }
 
     return {onCreateOrs};
 }
 
-export default orsController;
+export default OrsController;

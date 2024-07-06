@@ -1,9 +1,15 @@
 import OrsContainer from "@/app/(beforeLogin)/mentee/ors/components/OrsContainer";
+import {useRouter} from "next/navigation";
+import {getUser} from "@/actions/auth/user.action";
 
-const page = () => {
+type Props = {
+    userId: string;
+}
+const page = async () => {
+    const user = await getUser({ serverComponent: true });
     return (
         <main>
-            <OrsContainer/>
+            <OrsContainer userId={user?.id!!}/>
         </main>
     )
 

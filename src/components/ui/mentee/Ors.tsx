@@ -6,12 +6,12 @@ const MAX = 10;
 const MIN = 0;
 
 type Props = {
-    sharedUserFullName: string | "";
+    profile?: any;
     onCreateOrs: (individual: number, interpersonal: number, social: number, overall: number) => {};
 };
 
 const Ors = ({
-                 sharedUserFullName = "",
+                 profile = null,
                  onCreateOrs,
              }: Props) => {
     const [individual, setIndividual] = useState<number>(MIN);
@@ -50,13 +50,13 @@ const Ors = ({
                         <h1 className="text-6xl font-bold">
                             ORS
                         </h1>
-                        <p className="mt-2 text-xl">{sharedUserFullName} 님 요청 드립니다.</p>
-                        <p className="mt-2 text-xl">
+                        <p className="mt-2 text-xl">{profile?.full_name} 님 요청 드립니다.</p>
+                        <p className="mt-2 text-xl w-full max-w-[800px]">
                             오늘을 포함하여 지난 한주간 자신의 삶을 평가해주세요. 왼쪽에 표시하는 것은 낮은 수준을 뜻하며, 오른쪽에 표시하는 것은 높은 수준을 뜻합니다.
                         </p>
                     </header>
                     <form className="mt-10 text-2xl w-full flex flex-col items-center" onSubmit={onSubmit}>
-                        <div className="w-full">
+                        <div className="w-full max-w-[800px]">
                             <label htmlFor="minmax-range1"
                                    className="block mb-2 text-sm font-medium text-gray-900 ">개인적으로 (자기자신의 웰빙)</label>
 
@@ -89,7 +89,7 @@ const Ors = ({
                                    className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700"/>
                         </div>
 
-                        <div className="flex items-center justify-between mt-4 w-full">
+                        <div className="flex items-center justify-between mt-4 w-full max-w-[800px]">
                             <button
                                 className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full"
                                 type="submit">

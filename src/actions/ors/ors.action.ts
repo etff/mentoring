@@ -17,7 +17,8 @@ export const createOrs = async (
     individual: number,
     interpersonal: number,
     social: number,
-    overall: number
+    overall: number,
+    user_id: string
 ) => {
     const supabase = await createServerSideClient();
     const result = await supabase.from("ors")
@@ -25,7 +26,8 @@ export const createOrs = async (
             individual,
             interpersonal,
             social,
-            overall
+            overall,
+            user_id
         })
         .select();
     return result.data;

@@ -1,3 +1,4 @@
+"use server";
 import {createServerClient} from '@supabase/ssr';
 import {Database} from "@/types/supabase";
 import {cookies} from "next/headers";

@@ -1,7 +1,7 @@
 "use client"
 import Ors from "@/components/ui/mentee/Ors";
-import OrsController from "@/app/(beforeLogin)/mentee/hooks/orsController";
-import UserController from "@/app/(beforeLogin)/mentee/hooks/userController";
+import OrsController from "@/app/(site)/mentee/hooks/orsController";
+import UserController from "@/app/(site)/mentee/hooks/userController";
 
 type Props = {
     userId: string;

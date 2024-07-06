@@ -1,19 +1,19 @@
 'use client';
 
 import React from "react";
-import {BounceLoader} from "react-spinners";
+import {DotLoader} from "react-spinners";
 
-const Error = () => {
+const Loading = () => {
     return (
         <div className="flex flex-col items-center mt-12">
             <div>
-                <BounceLoader/>
+                <DotLoader/>
             </div>
             <div className="font-bold my-2">
-                There is something wrong..
+                loading..
             </div>
         </div>
     )
 };
 
-export default Error;
+export default Loading;

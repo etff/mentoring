@@ -25,7 +25,7 @@ const UserController = (userId: string) => {
 
     useEffect(() => {
         fetchProfile();
-    },[userId]);
+    }, [userId]);
 
     return {loading, profile};
 }

@@ -21,7 +21,7 @@ const Main = ({user}: Props) => {
                         <p> 오늘을 포함해 지난 한주간을 돌아봅시다.</p>
                         <Link
                             href={{
-                                pathname:  "/mentee/ors"
+                                pathname: "/mentee/ors"
                             }}
                             className="border-2 border-black bg-blue-400 mt-2"
                         >ORS 시작하기</Link>

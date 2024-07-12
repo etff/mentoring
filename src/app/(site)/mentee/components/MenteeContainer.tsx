@@ -8,7 +8,7 @@ type Props = {
 const MenteeContainer = ({user}: Props) => {
     return (
         <div>
-            <Main user={user} />
+            <Main user={user}/>
         </div>
     )
 };

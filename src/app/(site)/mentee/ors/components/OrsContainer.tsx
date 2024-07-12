@@ -7,7 +7,7 @@ type Props = {
     userId: string;
 }
 
-const OrsContainer = ({userId}:Props) => {
+const OrsContainer = ({userId}: Props) => {
     const {onCreateOrs} = OrsController(userId);
     const {profile} = UserController(userId);
 

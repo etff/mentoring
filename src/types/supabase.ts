@@ -40,15 +40,7 @@ export type Database = {
           social?: number
           user_id?: string | null
         }
-        Relationships: [
-          {
-            foreignKeyName: "ors_user_id_fkey"
-            columns: ["user_id"]
-            isOneToOne: false
-            referencedRelation: "users"
-            referencedColumns: ["id"]
-          },
-        ]
+        Relationships: []
       }
       profiles: {
         Row: {
@@ -80,6 +72,47 @@ export type Database = {
             foreignKeyName: "profiles_id_fkey"
             columns: ["id"]
             isOneToOne: true
+            referencedRelation: "users"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      srs: {
+        Row: {
+          approach: number
+          created_at: string
+          deleted_at: string | null
+          goals: number | null
+          id: number
+          overall: number | null
+          relationship: number | null
+          user_id: string
+        }
+        Insert: {
+          approach?: number
+          created_at?: string
+          deleted_at?: string | null
+          goals?: number | null
+          id?: number
+          overall?: number | null
+          relationship?: number | null
+          user_id: string
+        }
+        Update: {
+          approach?: number
+          created_at?: string
+          deleted_at?: string | null
+          goals?: number | null
+          id?: number
+          overall?: number | null
+          relationship?: number | null
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "srs_user_id_fkey"
+            columns: ["user_id"]
+            isOneToOne: false
             referencedRelation: "users"
             referencedColumns: ["id"]
           },

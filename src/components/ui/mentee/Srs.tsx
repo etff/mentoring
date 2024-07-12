@@ -2,34 +2,33 @@
 import {FormEvent, useState} from "react";
 import {useRouter} from "next/navigation";
 
-const MAX = 10;
 const MIN = 0;
 
 type Props = {
     profile?: any;
-    onCreateOrs: (individual: number, interpersonal: number, social: number, overall: number) => {};
+    onCreateSrs: (relationship: number, interpersonal: number, social: number, overall: number) => {};
 };
 
-const Ors = ({
+const Srs = ({
                  profile = null,
-                 onCreateOrs,
+                 onCreateSrs,
              }: Props) => {
-    const [individual, setIndividual] = useState<number>(MIN);
-    const [interpersonal, setInterpersonal] = useState<number>(MIN);
-    const [social, setSocial] = useState<number>(MIN);
+    const [relationship, setRelationship] = useState<number>(MIN);
+    const [goals, setGoals] = useState<number>(MIN);
+    const [approach, setApproach] = useState<number>(MIN);
     const [overall, setOverall] = useState<number>(MIN);
     const router = useRouter();
 
-    const handleIndividual = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setIndividual(Number(event.target.value));
+    const handleRelationship = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setRelationship(Number(event.target.value));
     };
 
-    const handleInterpersonal = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setInterpersonal(Number(event.target.value));
+    const handleGoals = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setGoals(Number(event.target.value));
     };
 
-    const handleSocial = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setSocial(Number(event.target.value));
+    const handleApproach = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setApproach(Number(event.target.value));
     };
 
     const handleOverall = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -38,13 +37,13 @@ const Ors = ({
 
     const onSubmit = (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        onCreateOrs(individual, interpersonal, social, overall);
+        onCreateSrs(relationship, goals, approach, overall);
         router.push("/mentee");
     };
 
     return (
         <main className="w-full mx-auto flex justify-center items-center min-h-screen p-4">
-            <section className="w-full mx-auto">
+            <section className="w-full mx-auto p-2">
                 <article className="flex flex-col justify-between items-center">
                     <header className="w-full flex flex-col items-center">
                         <h1 className="text-6xl font-bold">
@@ -52,37 +51,39 @@ const Ors = ({
                         </h1>
                         <p className="mt-2 text-xl">{profile?.full_name} 님 요청 드립니다.</p>
                         <p className="mt-2 text-xl w-full max-w-[800px]">
-                            오늘을 포함하여 지난 한주간 자신의 삶을 평가해주세요. 왼쪽에 표시하는 것은 낮은 수준을 뜻하며, 오른쪽에 표시하는 것은 높은 수준을 뜻합니다.
+                            오늘 세션을 평가해주세요. 왼쪽에 표시하는 것은 낮은 수준을 뜻하며, 오른쪽에 표시하는 것은 높은 수준을 뜻합니다.
                         </p>
                     </header>
-                    <form className="mt-10 text-2xl w-full flex flex-col items-center" onSubmit={onSubmit}>
+                    <form className="mt-10 text-2xl w-full flex flex-col items-center p-2" onSubmit={onSubmit}>
                         <div className="w-full max-w-[800px]">
                             <label htmlFor="minmax-range1"
-                                   className="block mb-2 text-sm font-medium text-gray-900 ">개인적으로 (자기자신의 웰빙)</label>
+                                   className="block mb-2 text-sm font-medium text-gray-900 ">관계 (말을 들어주고 이해받고
+                                존중받았다)</label>
 
-                            <input id="labels-range-input1" type="range" value={individual} min="0" max="10"
-                                   onChange={handleIndividual}
+                            <input id="labels-range-input1" type="range" value={relationship} min="0" max="10"
+                                   onChange={handleRelationship}
                                    className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700"/>
 
                             <label htmlFor="minmax-range2"
-                                   className="block mt-2 mb-2 text-sm font-medium text-gray-900">대인적으로 (가까운 관계,
-                                가족)</label>
+                                   className="block mt-2 mb-2 text-sm font-medium text-gray-900">목표와 주제 (내가 다루거나 얘기하길
+                                원하는 것을 우리가 다루고 얘기했다)</label>
 
-                            <input id="labels-range-input2" type="range" value={interpersonal} min="0" max="10"
-                                   onChange={handleInterpersonal}
+                            <input id="labels-range-input2" type="range" value={goals} min="0" max="10"
+                                   onChange={handleGoals}
                                    className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700"/>
 
                             <label htmlFor="minmax-range3"
-                                   className="block mt-2 mb-2 text-sm font-medium text-gray-900">사회적으로 (친구관계, 학교,
-                                직장)</label>
+                                   className="block mt-2 mb-2 text-sm font-medium text-gray-900">접근법이나 방식 (이 분의 접근법은 나에게
+                                잘 맞는다)</label>
 
-                            <input id="labels-range-input3" type="range" value={social} min="0" max="10"
-                                   onChange={handleSocial}
+                            <input id="labels-range-input3" type="range" value={approach} min="0" max="10"
+                                   onChange={handleApproach}
                                    className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700"/>
 
                             <label htmlFor="minmax-range4"
-                                   className="block mt-2 mb-2 text-sm font-medium text-gray-900">전반적으로 (웰빙에 대한 전반적
-                                느낌)</label>
+                                   className="block mt-2 mb-2 text-sm font-medium text-gray-900">전반적으로 (전반적으로 오늘의 세션은
+                                나에게 알맞았다
+                                )</label>
 
                             <input id="labels-range-input4" type="range" value={overall} min="0" max="10"
                                    onChange={handleOverall}
@@ -103,4 +104,4 @@ const Ors = ({
     );
 }
 
-export default Ors;
+export default Srs;

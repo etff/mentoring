@@ -2,21 +2,21 @@
 
 import {createServerSideClient} from "@/lib/supabase";
 
-export const createOrs = async (
-    individual: number,
-    interpersonal: number,
-    social: number,
+export const createSrs = async (
+    relationship: number,
+    goals: number,
+    approach: number,
     overall: number,
     userId: string
 ) => {
     const supabase = await createServerSideClient();
-    const result = await supabase.from("ors")
+    const result = await supabase.from("srs")
         .insert({
-            individual,
-            interpersonal,
-            social,
             overall,
-            user_id: userId
+            relationship,
+            approach,
+            goals,
+            user_id: userId,
         })
         .select();
     return result.data;

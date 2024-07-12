@@ -29,7 +29,12 @@ const Main = ({user}: Props) => {
                     <section className="mt-10 text-xl">
                         <h2> SRS </h2>
                         <p> 오늘을 포함해 지난 한주간을 돌아봅시다.</p>
-                        <button className="border-2 border-black bg-blue-400 mt-2">SRS 시작하기</button>
+                        <Link
+                            href={{
+                                pathname: "/mentee/srs"
+                            }}
+                            className="border-2 border-black bg-blue-400 mt-2"
+                        >SRS 시작하기</Link>
                     </section>
                 </article>
             </section>

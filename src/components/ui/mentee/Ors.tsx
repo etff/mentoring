@@ -44,7 +44,7 @@ const Ors = ({
 
     return (
         <main className="w-full mx-auto flex justify-center items-center min-h-screen p-4">
-            <section className="w-full mx-auto">
+            <section className="w-full mx-auto p-2">
                 <article className="flex flex-col justify-between items-center">
                     <header className="w-full flex flex-col items-center">
                         <h1 className="text-6xl font-bold">
@@ -55,7 +55,7 @@ const Ors = ({
                             오늘을 포함하여 지난 한주간 자신의 삶을 평가해주세요. 왼쪽에 표시하는 것은 낮은 수준을 뜻하며, 오른쪽에 표시하는 것은 높은 수준을 뜻합니다.
                         </p>
                     </header>
-                    <form className="mt-10 text-2xl w-full flex flex-col items-center" onSubmit={onSubmit}>
+                    <form className="mt-10 text-2xl w-full flex flex-col items-center p-2" onSubmit={onSubmit}>
                         <div className="w-full max-w-[800px]">
                             <label htmlFor="minmax-range1"
                                    className="block mb-2 text-sm font-medium text-gray-900 ">개인적으로 (자기자신의 웰빙)</label>

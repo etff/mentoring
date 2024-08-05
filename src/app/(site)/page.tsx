@@ -13,6 +13,7 @@ export default function Home() {
                     </header>
                     <section className="mt-10 text-2xl">
                         <Link href="/mentee" className="text-blue-500 underline hover:text-blue-800">멘티 사이트로 이동</Link>
+                        <Link href="/mentor" className="text-blue-500 underline hover:text-blue-800">멘토 사이트로 이동</Link>
                     </section>
                 </article>
             </section>

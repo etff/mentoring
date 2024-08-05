@@ -42,8 +42,9 @@ const Srs = ({
     };
 
     return (
-        <main className="w-full mx-auto flex justify-center items-center min-h-screen p-4">
-            <section className="w-full mx-auto p-2">
+        <main className="w-full h-full max-w-[800px] p-5 mx-auto">
+            <section
+                className="p-10 mx-auto bg-white shadow-md rounded-lg min-h-[85vh] flex justify-center items-center">
                 <article className="flex flex-col justify-between items-center">
                     <header className="w-full flex flex-col items-center">
                         <h1 className="text-6xl font-bold">

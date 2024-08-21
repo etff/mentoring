@@ -1,4 +1,4 @@
-import {createOrs} from "@/actions/ors/ors.action";
+import {createOrs, getOrsList} from "@/actions/ors/ors.action";
 
 
 const OrsController = (userId: string) => {
@@ -18,7 +18,13 @@ const OrsController = (userId: string) => {
         );
     }
 
-    return {onCreateOrs};
+    const orsList = async (userId: string) => {
+        const orsList = await getOrsList(userId);
+        console.log("orsList", orsList);
+        return orsList as any[];
+    }
+
+    return {onCreateOrs, orsList};
 }
 
 export default OrsController;

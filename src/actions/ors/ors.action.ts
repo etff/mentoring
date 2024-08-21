@@ -1,6 +1,9 @@
 "use server";
 
 import {createServerSideClient} from "@/lib/supabase";
+import {Database} from "@/types/supabase";
+
+type OrsDto = Database["public"]["Tables"]["ors"]["Row"];
 
 export const createOrs = async (
     individual: number,
@@ -22,4 +25,11 @@ export const createOrs = async (
     return result.data;
 }
 
+export const getOrsList = async (userId: string) => {
+    const supabase = await createServerSideClient();
+    const result = await supabase.from("ors")
+        .select("*")
+        .eq("user_id", userId);
+    return result.data as OrsDto[];
+}
 

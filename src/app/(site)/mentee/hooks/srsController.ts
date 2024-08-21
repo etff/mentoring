@@ -16,7 +16,6 @@ const SrsController = (userId: string) => {
             overall,
             userId
         );
-        console.log("result >", result);
     }
 
     return {onCreateSrs};

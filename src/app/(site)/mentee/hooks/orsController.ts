@@ -20,7 +20,6 @@ const OrsController = (userId: string) => {
 
     const orsList = async (userId: string) => {
         const orsList = await getOrsList(userId);
-        console.log("orsList", orsList);
         return orsList as any[];
     }
 

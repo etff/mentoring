@@ -1,7 +1,7 @@
 "use client";
 import {FormEvent, useState} from "react";
 import {useRouter} from "next/navigation";
-import IndividualInput from "./input/IndividualInput"; // Import the new component
+import RangeInput from "./input/RangeInput"; // Import the new component
 
 const MAX = 10;
 const MIN = 0;
@@ -20,18 +20,6 @@ const Ors = ({
     const [social, setSocial] = useState<number>(MIN);
     const [overall, setOverall] = useState<number>(MIN);
     const router = useRouter();
-
-    const handleInterpersonal = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setInterpersonal(Number(event.target.value));
-    };
-
-    const handleSocial = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setSocial(Number(event.target.value));
-    };
-
-    const handleOverall = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setOverall(Number(event.target.value));
-    };
 
     const onSubmit = (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
@@ -52,46 +40,10 @@ const Ors = ({
                         </p>
                     </header>
                     <form className="mt-10 text-2xl w-full flex flex-col items-center p-2" onSubmit={onSubmit}>
-                        <IndividualInput value={individual} onChange={setIndividual}/>
-
-                        <label htmlFor="minmax-range2" className="block mt-2 mb-2 text-sm font-medium text-gray-900">
-                            대인적으로 (가까운 관계, 가족)
-                        </label>
-                        <input
-                            id="labels-range-input2"
-                            type="range"
-                            value={interpersonal}
-                            min="0"
-                            max="10"
-                            onChange={handleInterpersonal}
-                            className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700"
-                        />
-
-                        <label htmlFor="minmax-range3" className="block mt-2 mb-2 text-sm font-medium text-gray-900">
-                            사회적으로 (친구관계, 학교, 직장)
-                        </label>
-                        <input
-                            id="labels-range-input3"
-                            type="range"
-                            value={social}
-                            min="0"
-                            max="10"
-                            onChange={handleSocial}
-                            className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700"
-                        />
-
-                        <label htmlFor="minmax-range4" className="block mt-2 mb-2 text-sm font-medium text-gray-900">
-                            전반적으로 (웰빙에 대한 전반적 느낌)
-                        </label>
-                        <input
-                            id="labels-range-input4"
-                            type="range"
-                            value={overall}
-                            min="0"
-                            max="10"
-                            onChange={handleOverall}
-                            className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700"
-                        />
+                        <RangeInput value={individual} onChange={setIndividual} label="개인적으로 (자기자신의 웰빙)"/>
+                        <RangeInput value={interpersonal} onChange={setInterpersonal} label="대인적으로 (가까운 관계, 가족)"/>
+                        <RangeInput value={social} onChange={setSocial} label="사회적으로 (친구관계, 학교, 직장)"/>
+                        <RangeInput value={overall} onChange={setOverall} label="전반적으로 (웰빙에 대한 전반적 느낌)"/>
 
                         <div className="flex items-center justify-between mt-4 w-full max-w-[800px]">
                             <button

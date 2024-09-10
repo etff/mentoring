@@ -1,7 +1,8 @@
 "use client";
 import {FormEvent, useState} from "react";
 import {useRouter} from "next/navigation";
-import RangeInput from "./input/RangeInput"; // Import the new component
+import RangeInput from "./input/RangeInput";
+import useUserStore from "@/store/auth/useUserStore"; // Import the new component
 
 const MAX = 10;
 const MIN = 0;
@@ -20,6 +21,9 @@ const Ors = ({
     const [social, setSocial] = useState<number>(MIN);
     const [overall, setOverall] = useState<number>(MIN);
     const router = useRouter();
+
+    useUserStore().setUserId(profile?.id);
+    useUserStore().setUserName(profile?.full_name);
 
     const onSubmit = (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();

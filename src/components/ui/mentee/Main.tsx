@@ -1,11 +1,6 @@
 import Link from "next/link";
-import {User} from "@supabase/auth-js";
 
-type Props = {
-    user: User | null;
-}
-
-const Main = ({user}: Props) => {
+const Main = () => {
     return (
         <main className="w-full max-w-[800px] p-5 mx-auto">
             <section

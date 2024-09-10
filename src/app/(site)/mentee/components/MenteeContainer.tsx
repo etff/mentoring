@@ -5,10 +5,10 @@ type Props = {
     user: User | null;
 }
 
-const MenteeContainer = ({user}: Props) => {
+const MenteeContainer = () => {
     return (
         <div>
-            <Main user={user}/>
+            <Main/>
         </div>
     )
 };

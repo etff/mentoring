@@ -34,7 +34,7 @@ const AuthHeader = ({user}: Props) => {
     };
 
     return (
-        <header className="h-[50px] bg-white">
+        <header className="h-[50px] bg-white sticky">
             <section className="px-6 h-full">
                 <div className="h-full flex flex-row justify-between items-center">
                     <div

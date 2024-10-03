@@ -7,7 +7,7 @@ export default async function Mentee() {
     return (
         <main>
             {user ? (
-                <MenteeContainer user={user}/>
+                <MenteeContainer/>
             ) : (
                 <>
                     <div className=" flex flex-col items-center mt-12">

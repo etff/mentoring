@@ -8,7 +8,6 @@ const page = async () => {
             <CreateContainer userId={user?.id!!}/>
         </main>
     )
-
 }
 
 export default page;

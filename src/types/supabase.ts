@@ -9,6 +9,89 @@ export type Json =
 export type Database = {
   public: {
     Tables: {
+      meeting: {
+        Row: {
+          created_at: string
+          deleted_at: string | null
+          id: number
+          mentoring_id: number
+          updated_at: string | null
+          user_id: string | null
+        }
+        Insert: {
+          created_at?: string
+          deleted_at?: string | null
+          id?: number
+          mentoring_id: number
+          updated_at?: string | null
+          user_id?: string | null
+        }
+        Update: {
+          created_at?: string
+          deleted_at?: string | null
+          id?: number
+          mentoring_id?: number
+          updated_at?: string | null
+          user_id?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "meeting_mentoring_id_fkey"
+            columns: ["mentoring_id"]
+            isOneToOne: false
+            referencedRelation: "mentoring"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "meeting_user_id_fkey"
+            columns: ["user_id"]
+            isOneToOne: false
+            referencedRelation: "users"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      mentoring: {
+        Row: {
+          created_at: string
+          deleted_at: string | null
+          end_date: string | null
+          id: number
+          name: string | null
+          start_date: string | null
+          updated_at: string | null
+          user_id: string | null
+        }
+        Insert: {
+          created_at?: string
+          deleted_at?: string | null
+          end_date?: string | null
+          id?: number
+          name?: string | null
+          start_date?: string | null
+          updated_at?: string | null
+          user_id?: string | null
+        }
+        Update: {
+          created_at?: string
+          deleted_at?: string | null
+          end_date?: string | null
+          id?: number
+          name?: string | null
+          start_date?: string | null
+          updated_at?: string | null
+          user_id?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "mentoring_user_id_fkey"
+            columns: ["user_id"]
+            isOneToOne: false
+            referencedRelation: "users"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       ors: {
         Row: {
           created_at: string | null
@@ -16,6 +99,7 @@ export type Database = {
           id: number
           individual: number
           interpersonal: number
+          meeting_id: number | null
           overall: number
           social: number
           user_id: string | null
@@ -26,6 +110,7 @@ export type Database = {
           id?: number
           individual?: number
           interpersonal?: number
+          meeting_id?: number | null
           overall?: number
           social?: number
           user_id?: string | null
@@ -36,11 +121,27 @@ export type Database = {
           id?: number
           individual?: number
           interpersonal?: number
+          meeting_id?: number | null
           overall?: number
           social?: number
           user_id?: string | null
         }
-        Relationships: []
+        Relationships: [
+          {
+            foreignKeyName: "ors_meeting_id_fkey"
+            columns: ["meeting_id"]
+            isOneToOne: false
+            referencedRelation: "meeting"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "ors_user_id_fkey"
+            columns: ["user_id"]
+            isOneToOne: false
+            referencedRelation: "users"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       profiles: {
         Row: {
@@ -84,6 +185,7 @@ export type Database = {
           deleted_at: string | null
           goals: number | null
           id: number
+          meeting_id: number | null
           overall: number | null
           relationship: number | null
           user_id: string
@@ -94,6 +196,7 @@ export type Database = {
           deleted_at?: string | null
           goals?: number | null
           id?: number
+          meeting_id?: number | null
           overall?: number | null
           relationship?: number | null
           user_id: string
@@ -104,11 +207,19 @@ export type Database = {
           deleted_at?: string | null
           goals?: number | null
           id?: number
+          meeting_id?: number | null
           overall?: number | null
           relationship?: number | null
           user_id?: string
         }
         Relationships: [
+          {
+            foreignKeyName: "srs_meeting_id_fkey"
+            columns: ["meeting_id"]
+            isOneToOne: false
+            referencedRelation: "meeting"
+            referencedColumns: ["id"]
+          },
           {
             foreignKeyName: "srs_user_id_fkey"
             columns: ["user_id"]
